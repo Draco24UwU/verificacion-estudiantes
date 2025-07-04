@@ -1,0 +1,115 @@
+/* You can add global styles to this file, and also import other style files */
+@layer tailwind, primeng;
+@layer tailwind {
+  @import "tailwindcss";
+}
+
+/* Utility clases */
+@utility sm-dialog {
+  @apply max-h-[85dvh] 2xl:w-[30dvw] xl:w-[35dvw] lg:w-[40dvw] md:w-[45dvw] sm:w-[50dvw] w-[85dvw] overflow-auto transition-all shadow-2xl duration-100 ease-in-out bg-white rounded-md p-4;
+}
+@utility md-dialog {
+  @apply max-h-[85dvh] 2xl:w-[35dvw] xl:w-[40dvw] lg:w-[45dvw] md:w-[50dvw] sm:w-[55dvw] w-[85dvw] overflow-auto transition-all shadow-2xl duration-100 ease-in-out bg-white rounded-md p-4;
+}
+@utility lg-dialog {
+  @apply max-h-[85dvh] 2xl:w-[40dvw] xl:w-[45dvw] lg:w-[50dvw] md:w-[55dvw] sm:w-[60dvw] w-[85dvw] overflow-auto transition-all shadow-2xl duration-100 ease-in-out bg-white rounded-md p-4;
+}
+@utility xl-dialog {
+  @apply max-h-[85dvh] 2xl:w-[45dvw] xl:w-[50dvw] lg:w-[55dvw] md:w-[60dvw] sm:w-[65dvw] w-[85dvw] overflow-auto transition-all shadow-2xl duration-100 ease-in-out bg-white rounded-md p-4;
+}
+
+
+h1 {
+  font-size: clamp(1.5rem, 5vw, 3rem);
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+h2 {
+  font-size: clamp(1.25rem, 4vw, 2.5rem);
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+h3 {
+  font-size: clamp(1.125rem, 3.5vw, 2rem);
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+h4 {
+  font-size: clamp(1rem, 3vw, 1.5rem);
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+h5 {
+  font-size: clamp(0.875rem, 2.5vw, 1.25rem);
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+h6 {
+  font-size: clamp(0.75rem, 2vw, 1rem);
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+p {
+  font-size: clamp(1rem, 2.5vw, 1.25rem);
+  line-height: 1.6;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  font-weight: 400;
+}
+
+span {
+  font-size: clamp(0.875rem, 2vw, 1.125rem);
+  line-height: 1.4;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  font-weight: 400;
+  color: inherit;
+}
+
+
+
+
+/*
+  Clases NGprime.
+*/
+
+:root {
+  --p-inputtext-border-radius: 12px;
+}
+
+
+/*
+  Clases personalizadas.
+*/
+
+.background_login {
+  display: flex;
+  position: absolute;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  width: 100vw;
+}
+
+.background_login::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: linear-gradient(to bottom,
+      rgba(255, 247, 241, 0.1),
+      rgba(255, 247, 241, 0.6)),
+    repeating-linear-gradient(0deg,
+      rgba(255, 255, 255, 0.3) 0px,
+      rgba(255, 255, 255, 0.3) 1px,
+      transparent 2px,
+      transparent 50px),
+    repeating-linear-gradient(90deg,
+      rgba(255, 255, 255, 0.3) 0px,
+      rgba(255, 255, 255, 0.3) 1px,
+      transparent 2px,
+      transparent 50px),
+    linear-gradient(to right, #6366f1, #ec4899, #ff696f);
+  filter: blur(2px);
+  z-index: -1;
+}
