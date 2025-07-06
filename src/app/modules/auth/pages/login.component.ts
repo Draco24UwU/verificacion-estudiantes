@@ -4,17 +4,15 @@ import { InputTextModule } from 'primeng/inputtext';
 
 @Component({
   selector: 'app-login',
-   imports: [ButtonModule, InputTextModule],
+  imports: [ButtonModule, InputTextModule],
   template: `
-  <ng-container>
+    <ng-container>
       <section class="background_login">
-
         <div
-          class="w-[90%] h-[90%] text-white rounded-4xl xl:p-20 lg:p-20 md:p-16 p-8 bg-slate-800/50 flex flex-col items-center justify-start md:flex-row md:items-start md:justify-center gap-4"
+          class="w-[90%] h-[90%]
+          text-white rounded-4xl xl:p-20 lg:p-20 md:p-16 p-8 bg-slate-800/50 flex flex-col items-center justify-start md:flex-row md:items-start md:justify-center gap-4"
         >
           <div class="w-full space-y-8">
-
-
             <section>
               <h1 class="font-semibold">Bienvenido de vuelta</h1>
               <h3>Por favor ingresa con tu cuenta.</h3>
@@ -55,14 +53,16 @@ import { InputTextModule } from 'primeng/inputtext';
               <div
                 class="absolute xl:-bottom-64 shadow-2xl border-4 border-white border-b-violet-300  shadow-violet-300/50 -bottom-40 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[90%] xl:h-[300px] h-[200px] bg-slate-100 bg-gradient-to-r from-[#FEBCF2]  to-[#FEFEFE] rounded-4xl z-0"
               ></div>
-              <h2 class="relative z-10">Bienvenido de vuelta a tu aplicacion favorita</h2>
+              <h2 class="relative z-10">
+                Bienvenido de vuelta a tu aplicacion favorita
+              </h2>
             </section>
           </div>
         </div>
       </section>
     </ng-container>
-  `
+  `,
 })
 export class LoginComponent {
-
+  public owo = 0;
 }

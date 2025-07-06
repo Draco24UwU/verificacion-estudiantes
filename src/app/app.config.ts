@@ -1,4 +1,8 @@
-import { ApplicationConfig, provideBrowserGlobalErrorListeners, provideZoneChangeDetection } from '@angular/core';
+import {
+  ApplicationConfig,
+  provideBrowserGlobalErrorListeners,
+  provideZoneChangeDetection,
+} from '@angular/core';
 import { provideRouter } from '@angular/router';
 import { Routes } from '@angular/router';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
@@ -15,17 +19,19 @@ export const routes: Routes = [
   {
     path: '',
     pathMatch: 'full',
-    redirectTo: 'auth'
+    redirectTo: 'auth',
   },
   {
     path: 'auth',
-    loadChildren: () => import("./modules/auth/auth.config").then(m => m.authRoutes),
+    loadChildren: () =>
+      import('./modules/auth/auth.config').then((m) => m.authRoutes),
   },
   {
     path: 'app',
-    loadChildren: () => import("./modules/modules.config").then(m => m.ModulesRoutes),
-    canMatch: [authGuard]
-  }
+    loadChildren: () =>
+      import('./modules/modules.config').then((m) => m.ModulesRoutes),
+    canMatch: [authGuard],
+  },
 ];
 
 // * Configuracion del color principal

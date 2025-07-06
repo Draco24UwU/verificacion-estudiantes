@@ -8,7 +8,5 @@ import { AuthService } from '../../../core/auth/services/auth.service';
 export class DashboardComponent implements OnInit {
   private readonly _authService = inject(AuthService);
 
-  ngOnInit(): void {
-
-  }
+  ngOnInit(): void {}
 }

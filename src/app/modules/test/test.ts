@@ -35,29 +35,22 @@ interface Post {
 @Component({
   imports: [DynamicTableComponent],
   selector: 'app-test',
-  template: `
-  <ng-container>
+  template: ` <ng-container>
     <app-dynamic-table [tableConfig]="config" />
     <app-dynamic-table [tableConfig]="confiPosts" />
-    <div>
-
-
-    </div>
-
+    <div></div>
   </ng-container>`,
 })
 export class TestComponent {
-
   public test = store<Post[]>();
 
-  constructor(){
-    setTimeout(()=> {
-      this.test.data = [{body: "test", id: 1, title: "test2", userId: 1}];
+  constructor() {
+    setTimeout(() => {
+      this.test.data = [{ body: 'test', id: 1, title: 'test2', userId: 1 }];
       const owo = this.test.data;
       console.log(this.test.values());
-    },3000)
+    }, 3000);
   }
-
 
   public config: DynamicTableConfig<GitHubUser> = {
     route: {
@@ -76,7 +69,7 @@ export class TestComponent {
           term: {
             defaultValue: '',
             filterType: 'term',
-          }
+          },
         },
       },
     },
@@ -133,9 +126,9 @@ export class TestComponent {
             filterType: 'paginator',
           },
           term: {
-            defaultValue: "",
-            filterType: "term"
-          }
+            defaultValue: '',
+            filterType: 'term',
+          },
         },
       },
     },

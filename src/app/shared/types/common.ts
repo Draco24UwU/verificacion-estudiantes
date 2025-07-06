@@ -1,11 +1,11 @@
-import { HttpHeaders, HttpParams } from "@angular/common/http";
-import { WritableSignal } from "@angular/core";
-import { FormGroup } from "@angular/forms";
+import { HttpHeaders, HttpParams } from '@angular/common/http';
+import { WritableSignal } from '@angular/core';
+import { FormGroup } from '@angular/forms';
 
 export interface RouteDefinition<T = any> {
   url: `${string}`;
   method: 'GET' | 'PUT' | 'POST' | 'PATCH' | 'DELETE';
-  data: T
+  data: T;
 }
 
 export interface CommonConfig {
@@ -20,9 +20,9 @@ export type CommonParams<T extends CommonConfig> = {
 
 export interface options {
   body?: any;
-  queryParams?: HttpParams | { [param: string]: string | number | boolean };
+  queryParams?: HttpParams | Record<string, string | number | boolean>;
   pathParams?: Record<string, string | number | boolean>;
-  headers?: HttpHeaders | { [header: string]: string | string[] };
+  headers?: HttpHeaders | Record<string, string | string[]>;
   responseType?: 'json';
   withCredentials?: boolean;
   context?: any;
@@ -35,11 +35,11 @@ export interface BaseState<T> {
 }
 
 interface State<T> {
-  data: T[],
-  buffer: Record<string, T>,
+  data: T[];
+  buffer: Record<string, T>;
 }
 
-interface Paginator{
+interface Paginator {
   totalRecords: number;
   first: number;
   rows: number;
@@ -53,15 +53,13 @@ interface PaginatorParams {
   page: number;
 }
 
-
 export interface User {
-  name: string,
-  email: string,
-  password: string,
+  name: string;
+  email: string;
+  password: string;
 }
 
 // * Dynamic Table Interface.
-
 
 export interface DynamicTableConfig<N> {
   route: RouteDefinitionDynamicTable;
@@ -74,24 +72,26 @@ export type RouteDefinitionDynamicTable =
       method: 'GET';
       url: string;
       filters?: {
-        queryParams: {
-          [key: string]: {
+        queryParams: Record<
+          string,
+          {
             defaultValue: string | number | boolean;
             filterType: 'term' | 'select' | 'paginator';
-          };
-        };
+          }
+        >;
       };
     }
   | {
       method: 'POST';
       url: string;
       filters?: {
-        body: {
-          [key: string]: {
+        body: Record<
+          string,
+          {
             defaultValue: string | number | boolean;
             filterType: 'term' | 'select' | 'paginator';
-          };
-        };
+          }
+        >;
       };
     };
 
@@ -109,5 +109,3 @@ interface DynamicTableColumn<T> {
   sortable?: boolean;
   filterable?: boolean;
 }
-
-

@@ -3,7 +3,6 @@ import { AuthService } from '../../../core/auth/services/auth.service';
 import { ButtonModule } from 'primeng/button';
 import { InputTextModule } from 'primeng/inputtext';
 
-
 @Component({
   selector: 'app-login',
   imports: [ButtonModule, InputTextModule],
@@ -54,7 +53,9 @@ import { InputTextModule } from 'primeng/inputtext';
               <div
                 class="absolute xl:-bottom-64 shadow-2xl border-4 border-white border-b-violet-300  shadow-violet-300/50 -bottom-40 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[90%] xl:h-[300px] h-[200px] bg-slate-100 bg-gradient-to-r from-[#FEBCF2]  to-[#FEFEFE] rounded-4xl z-0"
               ></div>
-              <h2 class="relative z-10">Bienvenido de vuelta a tu aplicacion favorita</h2>
+              <h2 class="relative z-10">
+                Bienvenido de vuelta a tu aplicacion favorita
+              </h2>
             </section>
           </div>
         </div>
@@ -65,7 +66,5 @@ import { InputTextModule } from 'primeng/inputtext';
 export class LoginComponent implements OnInit {
   private readonly _authService = inject(AuthService);
 
-  ngOnInit(): void {
-
-  }
+  ngOnInit(): void {}
 }

@@ -4,10 +4,9 @@ import { RouterModule } from '@angular/router';
 @Component({
   selector: 'app-home',
   imports: [RouterModule],
-  template: `
-  <ng-container>
+  template: ` <ng-container>
     <section>
-      <router-outlet/>
+      <router-outlet />
     </section>
   </ng-container>`,
 })

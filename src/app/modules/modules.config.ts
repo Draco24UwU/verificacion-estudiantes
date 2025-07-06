@@ -12,19 +12,23 @@ export const ModulesRoutes: Routes = [
       {
         path: '',
         pathMatch: 'full',
-        redirectTo: 'home'
+        redirectTo: 'home',
       },
       {
         path: 'home',
-        loadChildren: () => import("./home/home.config").then((m) => m.homeRoutes)
+        loadChildren: () =>
+          import('./home/home.config').then((m) => m.homeRoutes),
       },
       {
         path: 'test',
-        loadChildren: () => import("./test/test.config").then((m) => m.testRoutes)
-      }
-    ]
+        loadChildren: () =>
+          import('./test/test.config').then((m) => m.testRoutes),
+      },
+    ],
   },
 ];
 
 // * Configuración del módulo Test.
-export const ModulesConfig: EnvironmentProviders[] = [provideRouter(ModulesRoutes)];
+export const ModulesConfig: EnvironmentProviders[] = [
+  provideRouter(ModulesRoutes),
+];

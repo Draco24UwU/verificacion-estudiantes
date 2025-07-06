@@ -1,8 +1,8 @@
-import { HttpClient } from "@angular/common/http";
-import { inject, Signal, signal } from "@angular/core";
-import { AbstractControl, FormBuilder, FormGroup } from "@angular/forms";
-import { CommonConfig, options, RouteDefinition } from "../types/common";
-import { firstValueFrom } from "rxjs";
+import { HttpClient } from '@angular/common/http';
+import { inject, Signal, signal } from '@angular/core';
+import { AbstractControl, FormBuilder, FormGroup } from '@angular/forms';
+import { CommonConfig, options, RouteDefinition } from '../types/common';
+import { firstValueFrom } from 'rxjs';
 
 export abstract class Common<T extends CommonConfig> {
   // * Inyeccion de dependencias.
@@ -69,23 +69,30 @@ export abstract class Common<T extends CommonConfig> {
     type ControlNames = keyof FormType['controls'];
 
     //* Creamos un objeto con cada control del formulario junto a su nombre
-    const controlsMap: Record<ControlNames, { value: ControlNames; control: AbstractControl }> =
-      Object.keys(formGroup.controls).reduce((acc, key) => {
+    const controlsMap: Record<
+      ControlNames,
+      { value: ControlNames; control: AbstractControl }
+    > = Object.keys(formGroup.controls).reduce(
+      (acc, key) => {
         const controlName = key as ControlNames;
         acc[controlName] = {
           value: controlName,
           control: formGroup.controls[key],
         };
         return acc;
-      }, {} as Record<ControlNames, { value: ControlNames; control: AbstractControl }>);
+      },
+      {} as Record<
+        ControlNames,
+        { value: ControlNames; control: AbstractControl }
+      >
+    );
 
     //* Retornamos el formulario y el mapa de controles
     return {
       form: formGroup,
       keys: controlsMap,
     };
-}
-
+  }
 
   protected getRoute(route: keyof T['routes']) {
     return this.routes[route];

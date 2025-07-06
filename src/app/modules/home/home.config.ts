@@ -12,10 +12,9 @@ export const homeRoutes: Routes = [
     children: [
       {
         path: 'test',
-        component: DashboardComponent
-
-      }
-    ]
+        component: DashboardComponent,
+      },
+    ],
   },
   {
     path: 'dashboard', // Ruta completa: "/home/dashboard"
@@ -24,6 +23,4 @@ export const homeRoutes: Routes = [
 ];
 
 // * Configuración del módulo Home.
-export const homeConfig: EnvironmentProviders[] = [
-  provideRouter(homeRoutes)
-];
+export const homeConfig: EnvironmentProviders[] = [provideRouter(homeRoutes)];
