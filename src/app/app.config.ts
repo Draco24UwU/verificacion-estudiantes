@@ -19,17 +19,12 @@ export const routes: Routes = [
   {
     path: '',
     pathMatch: 'full',
-    redirectTo: 'app',
+    redirectTo: 'login',
   },
   {
-    path: 'auth',
+    path: 'login',
     loadChildren: () =>
-      import('./modules/auth/auth.config').then(m => m.authRoutes),
-  },
-  {
-    path: 'app',
-    loadChildren: () =>
-      import('./modules/modules.config').then(m => m.ModulesRoutes),
+      import('./modules/login/login.routes').then(v => v.LoginRoutes),
   },
 ];
 
