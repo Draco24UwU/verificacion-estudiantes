@@ -1,11 +1,14 @@
-import { effect, inject, Injectable, signal } from '@angular/core';
-import { BaseState, DynamicTableConfig, RouteDefinition, RouteDefinitionDynamicTable } from '../../../types/common';
+import { inject, Injectable, signal } from '@angular/core';
+import {
+  BaseState,
+  DynamicTableConfig,
+  RouteDefinitionDynamicTable,
+} from '../../../types/common';
 import { DynamicTable } from '../../../interfaces/dynamic-table';
 import { PaginatorState } from 'primeng/paginator';
 import { HttpClient } from '@angular/common/http';
 import { firstValueFrom } from 'rxjs';
 import { FormBuilder, FormGroup } from '@angular/forms';
-
 
 @Injectable()
 export class DynamicTableService<T> implements DynamicTable<T> {
@@ -28,9 +31,9 @@ export class DynamicTableService<T> implements DynamicTable<T> {
   });
 
   constructor() {
-    effect(() => {
-      const form = this.filterForm;
-    });
+    // effect(() => {
+    //   const form = this.filterForm;
+    // });
   }
 
   async initializeTable(config: DynamicTableConfig<T>) {
@@ -45,7 +48,7 @@ export class DynamicTableService<T> implements DynamicTable<T> {
   onPageChange(event: PaginatorState): void {
     console.log('onPageChange', event);
 
-    this.baseState.paginator.update((prev) => {
+    this.baseState.paginator.update(prev => {
       return {
         ...prev,
         page: event.page!,
@@ -79,14 +82,14 @@ export class DynamicTableService<T> implements DynamicTable<T> {
       const data = await firstValueFrom(
         this._http.get<T[]>(route.url, {
           params: this.filterForm?.value,
-        })
+        }),
       );
       this.baseState.details.set({ data, buffer: {} });
     } else if (route.method === 'POST') {
       const data = await firstValueFrom(
         this._http.post<T[]>(route.url, {
           params: this.filterForm?.value,
-        })
+        }),
       );
       this.baseState.details.set({ data, buffer: {} });
     }
@@ -101,11 +104,11 @@ export class DynamicTableService<T> implements DynamicTable<T> {
     }
     const formGroupConfig: Record<string, any> = {};
 
-    if(route.method === 'GET'){
+    if (route.method === 'GET') {
       Object.entries(route.filters.queryParams).forEach(([key, value]) => {
         formGroupConfig[key] = [value.defaultValue];
       });
-    }else{
+    } else {
       Object.entries(route.filters.body).forEach(([key, value]) => {
         formGroupConfig[key] = [value.defaultValue];
       });
@@ -114,7 +117,6 @@ export class DynamicTableService<T> implements DynamicTable<T> {
     this.filterForm = this._fb.group(formGroupConfig);
     console.log('Filter Form Initialized:', this.filterForm);
   }
-
 
   // * Getters y Setters.
   get baseState() {

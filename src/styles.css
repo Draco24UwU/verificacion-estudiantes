@@ -1,8 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
-@layer tailwind, primeng;
-@layer tailwind {
-  @import "tailwindcss";
-}
+@import "tailwindcss";
+@plugin "tailwindcss-primeui";
 
 /* Utility clases */
 @utility sm-dialog {
@@ -17,7 +15,37 @@
 @utility xl-dialog {
   @apply max-h-[85dvh] 2xl:w-[45dvw] xl:w-[50dvw] lg:w-[55dvw] md:w-[60dvw] sm:w-[65dvw] w-[85dvw] overflow-auto transition-all shadow-2xl duration-100 ease-in-out bg-white rounded-md p-4;
 }
+@utility scroll-reveal {
+  animation: scroll-reveal linear;
+  animation-timeline: view();
+  animation-range: entry 0% cover 25%;
+}
 
+@theme {
+  --color-bread-50:  #fff8ec;  /* harina / miga fresca */
+  --color-bread-100: #ffeec7;  /* mantequilla suave */
+  --color-bread-200: #ffe09e;  /* dorado claro */
+  --color-bread-300: #ffd074;  /* dorado medio */
+  --color-bread-400: #fcb948;  /* miel / pan brioche */
+  --color-bread-500: #eaa634;  /* pan tradicional */
+  --color-bread-600: #c07f24;  /* costra ligera */
+  --color-bread-700: #8d5a1e;  /* pan rústico horneado */
+  --color-bread-800: #5f3b16;  /* tostado fuerte */
+  --color-bread-900: #3d270e;  /* borde crujiente */
+  --color-bread-950: #241506;  /* casi quemado */
+
+}
+
+@font-face {
+  font-family: 'LibertinusMono';
+  src: url('../public/font/LibertinusMono-Regular.ttf');
+  font-weight: normal;
+  font-style: normal;
+}
+
+:root {
+  font-family: 'LibertinusMono', sans-serif;
+}
 
 h1 {
   font-size: clamp(1.5rem, 5vw, 3rem);
@@ -57,24 +85,10 @@ p {
 }
 
 span {
-  font-size: clamp(0.875rem, 2vw, 1.125rem);
+  font-size: inherit;
   line-height: 1.4;
   transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-  font-weight: 400;
-  color: inherit;
 }
-
-
-
-
-/*
-  Clases NGprime.
-*/
-
-:root {
-  --p-inputtext-border-radius: 12px;
-}
-
 
 /*
   Clases personalizadas.
@@ -112,4 +126,19 @@ span {
     linear-gradient(to right, #6366f1, #ec4899, #ff696f);
   filter: blur(2px);
   z-index: -1;
+}
+
+/*
+  Animaciones.
+*/
+
+@keyframes scroll-reveal {
+  from {
+    opacity: 0;
+    transform: translateX(-100px) scale(0.5);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0px) scale(1);
+  }
 }

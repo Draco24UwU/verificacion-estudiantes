@@ -6,9 +6,10 @@ import { ReactiveFormsModule } from '@angular/forms';
   selector: 'app-root',
   imports: [RouterOutlet, ReactiveFormsModule],
   template: `
-  <ng-container>
-    <router-outlet />
-  </ng-container>`,
+    <ng-container>
+      <router-outlet />
+    </ng-container>
+  `,
 })
 export class App {
   protected title = 'AngularDesingPatterns';

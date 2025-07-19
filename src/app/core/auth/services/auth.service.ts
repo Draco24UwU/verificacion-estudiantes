@@ -4,14 +4,14 @@ import { User } from '../../../shared/types/common';
 @Injectable({
   providedIn: 'root',
 })
-export class AuthService  {
+export class AuthService {
   private $user = signal<User | null>(null);
 
   // *  Getters y Setters del servicio.
-  public get user(){
+  public get user() {
     return this.$user();
   }
-  public set user(user: User | null){
+  public set user(user: User | null) {
     this.$user.set(user);
   }
 }
