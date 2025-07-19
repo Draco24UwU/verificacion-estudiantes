@@ -17,12 +17,26 @@ export const ModulesRoutes: Routes = [
       {
         path: 'home',
         loadChildren: () =>
-          import('./home/home.config').then((m) => m.homeRoutes),
+          import('./home/home.config').then(m => m.homeRoutes),
       },
       {
         path: 'test',
         loadChildren: () =>
-          import('./test/test.config').then((m) => m.testRoutes),
+          import('./test/test.config').then(m => m.testRoutes),
+      },
+      {
+        path: 'contact',
+        loadChildren: () =>
+          import('./contact/contact.config').then(m => m.contactRoutes),
+      },
+      {
+        path: 'about-us',
+        loadChildren: () =>
+          import('./about-us/about-use.config').then(m => m.aboutUseRoutes),
+      },
+      {
+        path: 'faq',
+        loadChildren: () => import('./faq/faq.config').then(m => m.faqRoutes),
       },
     ],
   },

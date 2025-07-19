@@ -17,11 +17,11 @@ class Basestore<T> {
 
   private toBuffer(
     data: T,
-    key?: keyof UnwrapArray<T>
+    key?: keyof UnwrapArray<T>,
   ): Record<string, UnwrapArray<T>> {
     const buffer: Record<string, UnwrapArray<T>> = {};
     if (Array.isArray(data)) {
-      data.forEach((item) => {
+      data.forEach(item => {
         const bufferKey = key ? String(item[key]) : this.getDefaultId(item);
         buffer[bufferKey] = item;
       });
@@ -45,7 +45,7 @@ class Basestore<T> {
         acc[key] = (this as any)[key];
         return acc;
       },
-      {} as Record<string, any>
+      {} as Record<string, any>,
     );
   }
 

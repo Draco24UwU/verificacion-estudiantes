@@ -94,17 +94,17 @@ export class TestComponent {
       {
         name: 'editar',
         icon: 'fa-solid fa-gear',
-        callback: (data) => {
+        callback: data => {
           console.log('Editar:', data);
         },
-        disabled: (data) => {
+        disabled: data => {
           return data.id === 1;
         },
       },
       {
         name: 'eliminar',
         icon: 'fa-regular fa-user',
-        callback: (data) => {
+        callback: data => {
           console.log('Eliminar:', data);
         },
       },
@@ -153,17 +153,17 @@ export class TestComponent {
       {
         name: 'editar',
         icon: 'fa-solid fa-gear',
-        callback: (data) => {
+        callback: data => {
           console.log('Editar:', data);
         },
-        disabled: (data) => {
+        disabled: data => {
           return data.id === 1;
         },
       },
       {
         name: 'eliminar',
         icon: 'fa-regular fa-user',
-        callback: (data) => {
+        callback: data => {
           console.log('Eliminar:', data);
         },
       },

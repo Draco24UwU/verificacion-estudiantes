@@ -2,21 +2,28 @@ import { HttpHeaders, HttpParams } from '@angular/common/http';
 import { WritableSignal } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 
-export interface RouteDefinition<T = any> {
-  url: `${string}`;
-  method: 'GET' | 'PUT' | 'POST' | 'PATCH' | 'DELETE';
-  data: T;
+export class RouteDefinition<T> {
+  private readonly _brand = 'RouteDefinition';
+  constructor(
+    public url: string,
+    public method: 'GET' | 'POST' | 'PUT' | 'DELETE' | 'PATCH',
+    public data: T,
+  ) {}
+}
+
+// Función helper para crear rutas con tipo seguro
+export function Route<T>(definition: {
+  url: string;
+  method: 'GET' | 'POST' | 'PUT' | 'DELETE' | 'PATCH';
+}): RouteDefinition<T> {
+  return new RouteDefinition(definition.url, definition.method, {} as T);
 }
 
 export interface CommonConfig {
   forms: Record<string, FormGroup>;
-  routes: Record<string, RouteDefinition>;
+  routes: Record<string, RouteDefinition<any>>;
   baseState?: BaseState<any>;
 }
-
-export type CommonParams<T extends CommonConfig> = {
-  [K in keyof T]: T[K];
-};
 
 export interface options {
   body?: any;
@@ -27,6 +34,10 @@ export interface options {
   withCredentials?: boolean;
   context?: any;
 }
+
+export type CommonParams<T extends CommonConfig> = {
+  [K in keyof T]: T[K];
+};
 
 export interface BaseState<T> {
   details: WritableSignal<State<T>>;

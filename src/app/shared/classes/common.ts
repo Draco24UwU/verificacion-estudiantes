@@ -1,8 +1,8 @@
 import { HttpClient } from '@angular/common/http';
-import { inject, Signal, signal } from '@angular/core';
+import { inject, signal } from '@angular/core';
 import { AbstractControl, FormBuilder, FormGroup } from '@angular/forms';
-import { CommonConfig, options, RouteDefinition } from '../types/common';
 import { firstValueFrom } from 'rxjs';
+import { CommonConfig, options } from '../types/common';
 
 export abstract class Common<T extends CommonConfig> {
   // * Inyeccion de dependencias.
@@ -32,7 +32,7 @@ export abstract class Common<T extends CommonConfig> {
   // * Metodos de la clase common.
   protected APIrequest<K extends keyof T['routes']>(
     routeKey: K,
-    options?: options
+    options?: options,
   ): Promise<T['routes'][K]['data']> {
     const { method, url: baseUrl } = this.routes[routeKey];
 
@@ -41,7 +41,7 @@ export abstract class Common<T extends CommonConfig> {
       ? Object.entries(options.pathParams).reduce(
           (url, [key, value]) =>
             url.replace(`/:${key}`, `/${encodeURIComponent(value)}`),
-          baseUrl
+          baseUrl,
         )
       : baseUrl;
 
@@ -53,7 +53,7 @@ export abstract class Common<T extends CommonConfig> {
     };
 
     const response = firstValueFrom(
-      this._http.request(method, url, httpOptions)
+      this._http.request(method, url, httpOptions),
     );
 
     return response as T['routes'][K]['data'];
@@ -84,7 +84,7 @@ export abstract class Common<T extends CommonConfig> {
       {} as Record<
         ControlNames,
         { value: ControlNames; control: AbstractControl }
-      >
+      >,
     );
 
     //* Retornamos el formulario y el mapa de controles

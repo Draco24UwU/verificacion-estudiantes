@@ -1,15 +1,15 @@
 import { EnvironmentProviders } from '@angular/core';
 import { provideRouter } from '@angular/router';
 import { Routes } from '@angular/router';
-import { HomeComponent } from './home.component';
+import { FaqComponent } from './faq.component';
 
 // * Configuración de rutas del módulo Home.
-export const homeRoutes: Routes = [
+export const faqRoutes: Routes = [
   {
-    path: '', // Ruta "/home"
-    component: HomeComponent,
+    path: '', // Ruta "/faq"
+    component: FaqComponent,
   },
 ];
 
 // * Configuración del módulo Home.
-export const homeConfig: EnvironmentProviders[] = [provideRouter(homeRoutes)];
+export const faqConfig: EnvironmentProviders[] = [provideRouter(faqRoutes)];

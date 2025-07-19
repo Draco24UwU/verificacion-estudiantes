@@ -73,8 +73,8 @@ export class DynamicTableFiltersComponent implements OnInit {
   ngOnInit(): void {
     console.log(this.$routeDefinition());
 
-    this._DynamicTableService.filterForm?.valueChanges.subscribe((v) =>
-      console.log(v)
+    this._DynamicTableService.filterForm?.valueChanges.subscribe(v =>
+      console.log(v),
     );
   }
 

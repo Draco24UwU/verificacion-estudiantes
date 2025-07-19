@@ -78,13 +78,13 @@ export class DynamicTableComponent<T> implements OnInit {
     alias: 'tableConfig',
   });
   public $data = computed(
-    () => this._DynamicTableService.baseState.details().data
+    () => this._DynamicTableService.baseState.details().data,
   );
   public $loading = computed(() =>
-    this._DynamicTableService.baseState.loading()
+    this._DynamicTableService.baseState.loading(),
   );
   public $paginator = computed(() =>
-    this._DynamicTableService.baseState.paginator()
+    this._DynamicTableService.baseState.paginator(),
   );
 
   // constructor() {

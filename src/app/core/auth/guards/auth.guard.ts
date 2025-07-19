@@ -5,7 +5,7 @@ import { AuthService } from '../services/auth.service';
 // * CanMatch se encarga de decidir si una ruta debe cargarse.
 export const authGuard: CanMatchFn = (
   route,
-  segments
+  segments,
 ): MaybeAsync<GuardResult> => {
   const authService = inject(AuthService);
   const router = inject(Router);
