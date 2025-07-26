@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { QRCodeComponent } from 'angularx-qrcode';
+import { QrTokenService } from '../services/qr-generator.service';
 
 @Component({
   selector: 'app-qr-generator',
@@ -10,6 +11,14 @@ import { QRCodeComponent } from 'angularx-qrcode';
     </section>
   `,
 })
-export class QrGenerator {
-  qrData = `${window.location.origin}/login/take-photo`;
+export class QrGenerator implements OnInit {
+  private readonly service = inject(QrTokenService);
+  public token = '';
+  public qrData = '';
+
+  async ngOnInit() {
+    this.token = await this.service.generateToken();
+    console.log(this.token);
+    this.qrData = `${window.location.origin}/login/take-photo?token=${this.token}`;
+  }
 }

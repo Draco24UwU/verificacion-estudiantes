@@ -11,6 +11,4 @@ import { ReactiveFormsModule } from '@angular/forms';
     </ng-container>
   `,
 })
-export class App {
-  protected title = 'AngularDesingPatterns';
-}
+export class App {}
